@@ -1,0 +1,13 @@
+{
+  "name": "javascript_fundamentos",
+  "version": "1.0.0",
+  "description": "Javascript fundamentos en IDCAS",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "test-smoke": ""
+  },
+  "keywords": ["basic", "javascript"],
+  "author": "Carlos Pineda",
+  "license": "ISC"
+}
