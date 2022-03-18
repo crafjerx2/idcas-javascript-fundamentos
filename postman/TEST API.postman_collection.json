@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "3c7cbf63-706b-4672-988f-5ccb48d9e264",
+		"name": "TEST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ENDPOINT_001 - CHRISTOPHER",
+			"item": [
+				{
+					"name": "random activities.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200).and.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const jsonData = pm.response.json();  \r",
+									"\r",
+									"pm.test(\"Validar tipo de datos\", ()=> {\r",
+									" let i = \"\";\r",
+									" \r",
+									"if(jsonData.price > 0){\r",
+									"\r",
+									"     for( i in jsonData ){\r",
+									"     pm.expect(jsonData.activity,\"[activity]\").to.be.a(\"string\").and.not.be.empty;\r",
+									"     pm.expect(jsonData.type,\"[type]\").to.be.a(\"string\");\r",
+									"     pm.expect(jsonData.participants,\"[participants]\").to.be.a(\"number\");\r",
+									"     pm.expect(jsonData.price,\"[price]\").to.be.a(\"number\");\r",
+									"     pm.expect(jsonData.link,\"[link]\").to.be.a(\"string\")\r",
+									"     pm.expect(jsonData.key,\"[key]\").to.be.a(\"string\")\r",
+									"     pm.expect(jsonData.accessibility,\"[accessibility]\").to.be.a(\"number\")\r",
+									"   }\r",
+									"    }else{\r",
+									"      pm.test(\"Activitad Gratuita\", ()=>{\r",
+									"         console.log(\"Activitad Gratuita\");\r",
+									"      });\r",
+									"   }\r",
+									"\r",
+									"  });\r",
+									"\r",
+									"\r",
+									"  \r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.boredapi.com/api/activity",
+							"protocol": "https",
+							"host": [
+								"www",
+								"boredapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ENDPOINT_004 - FRANCISCO",
+			"item": [
+				{
+					"name": "random cat facts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test (\"VALIDAR REPUESTA 200 OK\" , ()=>{\r",
+									"pm.response.to.have.status(200).and.to.have.status(\"OK\")\r",
+									"} );\r",
+									"\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"DATOS\",()=>{\r",
+									"var i = \"\";\r",
+									"for (i in jsonData) {\r",
+									"    pm.expect(jsonData.fact, \"[fact]\").to.be.a(\"string\");\r",
+									"\r",
+									"pm.expect(jsonData.length, \"[length]\").to.be.a(\"number\");\r",
+									"\r",
+									" }\r",
+									"  });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://catfact.ninja/fact",
+							"protocol": "https",
+							"host": [
+								"catfact",
+								"ninja"
+							],
+							"path": [
+								"fact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ENDPOINT_005 - RAFAEL",
+			"item": [
+				{
+					"name": "random dog images.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Validando el status 200 del response\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Validando el Tipo de dato del campo: [message]\", function () {\r",
+									"    pm.expect(jsonData.message).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validando el Tipo de dato del campo: [status]\", function () {\r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"//Validando el tamaño de la respuesta del campo Status\r",
+									"pm.test(\"Condicional campo: [status]\", function () {\r",
+									"    if ( pm.expect(jsonData.status).to.have.lengthOf(7) ){\r",
+									"        console.log(\"El string del campo: status, tiene 7 caracteres\");\r",
+									"    } else {\r",
+									"        console.log(\"El string del campo: status, no tiene 7 caracteres\");\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"//Validando si la cadena contiene HTTPS o no\r",
+									"pm.test(\"Condicional capo: [message]\", function () {\r",
+									"    if ( pm.expect(jsonData.message).to.contain(\"https\") ) {\r",
+									"        console.log(\"El link esta usando protocolo con seguridad\");\r",
+									"    } else {\r",
+									"        console.log(\"El link no esta usando protocolo con seguridad\");\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"//Extraer la raza del perro del URL\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dog.ceo/api/breeds/image/random",
+							"protocol": "https",
+							"host": [
+								"dog",
+								"ceo"
+							],
+							"path": [
+								"api",
+								"breeds",
+								"image",
+								"random"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ENDPOINT_005 - YOHAN",
+			"item": [
+				{
+					"name": "random dog images.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonDatos = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Datos 1 \", function(){\r",
+									"    let i = \"\";\r",
+									"    for(i in jsonDatos){\r",
+									"        pm.expect(jsonDatos.message, \"[message]\").to.be.a(\"string\");\r",
+									"        pm.expect(jsonDatos.status, \"[status]\").to.equal('success');\r",
+									"\r",
+									"        \r",
+									"    }\r",
+									"}\r",
+									");\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dog.ceo/api/breeds/image/random",
+							"protocol": "https",
+							"host": [
+								"dog",
+								"ceo"
+							],
+							"path": [
+								"api",
+								"breeds",
+								"image",
+								"random"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ENDPOINT INTEGRADOS",
+			"item": [
+				{
+					"name": "CREAR USUARIOS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VALIDAR USUARIO CREADO",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR USUARIO CREADO",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRUEBA AGREGA",
+			"item": []
+		},
+		{
+			"name": "Integrado",
+			"item": [
+				{
+					"name": "Usuario Frank",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://catfact.ninja/fact",
+							"protocol": "https",
+							"host": [
+								"catfact",
+								"ninja"
+							],
+							"path": [
+								"fact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
